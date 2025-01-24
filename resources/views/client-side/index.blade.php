@@ -62,7 +62,7 @@ tr:nth-child(even) {
           <th>Ranking</th>
           <th>Team</th>
           <th>MP</th>
-          <th>W</th>
+          {{-- <th>W</th> --}}
           <th>D</th>
           <th>L</th>
           <th>Pts</th>
@@ -74,7 +74,7 @@ tr:nth-child(even) {
                 <td class="text-xl font-normal" style="font-family: sans-serif;">{{ $item->team_name }}</td>
                 <td>{{ $item->match_played }}</td>
                 <td>{{ $item->win }}</td>
-                <td>{{ $item->draw }}</td>
+                {{-- <td>{{ $item->draw }}</td> --}}
                 <td>{{ $item->lose }}</td>
                 <td>{{ $item->points }}</td>
                
@@ -94,7 +94,7 @@ tr:nth-child(even) {
           <th>Team</th>
           <th>MP</th>
           <th>W</th>
-          <th>D</th>
+          {{-- <th>D</th> --}}
           <th>L</th>
           <th>Pts</th>
         </tr>
@@ -105,7 +105,7 @@ tr:nth-child(even) {
                 <td class="text-xl font-normal" style="font-family: sans-serif;"> {{ $item->team_name }}</td>
                 <td>{{ $item->match_played }}</td>
                 <td>{{ $item->win }}</td>
-                <td>{{ $item->draw }}</td>
+                {{-- <td>{{ $item->draw }}</td> --}}
                 <td>{{ $item->lose }}</td>
                 <td>{{ $item->points }}</td>
                
