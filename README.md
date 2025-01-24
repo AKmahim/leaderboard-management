@@ -1,12 +1,12 @@
-## About XR Interactive Website
+## About Leaderboard Management System
 
-<p>XR Interactive is a gaming base on bangladesh.XR Interactive build</p>
+<p>Leaderboard Management system</p>
 
 ### key Feature
-- XR Interactive Porfolio site
-- Blogging system
-- admin management
-- blog author management
+- can add new team
+- update match played
+- update match win number
+- 
 
 
 
