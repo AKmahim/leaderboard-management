@@ -12,12 +12,12 @@ class FrontendController extends Controller
     public function Index(){
         $teams_a = Leaderboard::where('team_group','A')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
 
         $teams_b = Leaderboard::where('team_group','B')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
 
 

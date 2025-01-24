@@ -25,9 +25,10 @@
                                 <th scope="col">Group</th>
                                 <th scope="col">MP</th>
                                 <th scope="col">W</th>
-                                <th scope="col">D</th>
+                                {{-- <th scope="col">D</th> --}}
                                 <th scope="col">L</th>
                                 <th scope="col">Pts</th>
+                                <th scope="col">Pts(+/-)</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -40,11 +41,12 @@
                                     <td>{{ $item->team_group }}</td>
                                     <td>{{ $item->match_played }}</td>
                                     <td>{{ $item->win }}</td>
-                                    <td>{{ $item->draw }}</td>
+                                    {{-- <td>{{ $item->draw }}</td> --}}
                                     <td>{{ $item->lose }}</td>
                                     <td>{{ $item->points }}</td>
+                                    <td>{{ $item->points_plus_min }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="/admin/teams/leaderboard/edit/{{$item->id}}">Update</a>
+                                        <a class="btn btn-sm btn-primary"  href="/admin/teams/leaderboard/edit/{{$item->id}}">Update</a>
                                     </td>
                                     
                                 </tr>

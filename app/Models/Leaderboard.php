@@ -16,5 +16,6 @@ class Leaderboard extends Model
         'draw',
         'lose',
         'points',
+        'points_plus_min',
     ];
 }

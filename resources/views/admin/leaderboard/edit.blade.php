@@ -36,13 +36,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="number" name="draw" value="{{ $team->draw }}" required class="form-control" id="floatingInput" placeholder="draw">
-                    <label for="floatingInput">Draw</label>
-                    @error('draw')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+                
                 <div class="form-floating mb-3">
                     <input type="number" name="lose" value="{{ $team->lose }}" required class="form-control" id="floatingInput" placeholder="Match Lose">
                     <label for="floatingInput">Match Lose</label>
@@ -57,7 +51,13 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-            
+                <div class="form-floating mb-3">
+                    <input type="text" name="points_plus_min" value="{{ $team->points_plus_min}}" required class="form-control" id="floatingInput" placeholder="Enter Point (+/-)">
+                    <label for="floatingInput">Points(+/-)</label>
+                    @error('points_plus_min')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
             
                 
             

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('draw')->nullable()->default(0);
             $table->integer('lose')->nullable()->default(0);
             $table->float('points')->nullable()->default(0);
+            $table->float('points_plus_min')->nullable()->default(0);
             $table->timestamps();
         });
     }

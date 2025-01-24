@@ -13,7 +13,7 @@ class LeaderboardController extends Controller
     public function FrontendViewTeamA(){
         $teams = Leaderboard::where('team_group','A')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
 
         return response()->json([
@@ -25,7 +25,7 @@ class LeaderboardController extends Controller
     public function FrontendViewTeamB(){
         $teams = Leaderboard::where('team_group','B')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
 
         return response()->json([
@@ -39,7 +39,7 @@ class LeaderboardController extends Controller
     public function ViewTeamA(){
         $teams = Leaderboard::where('team_group','A')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
         return view('admin.leaderboard.leaderboard-a',compact('teams'));
 
@@ -48,7 +48,7 @@ class LeaderboardController extends Controller
     public function ViewTeamB(){
         $teams = Leaderboard::where('team_group','B')
         ->orderBy('win', 'desc')
-        ->orderBy('points', 'desc')
+        ->orderBy('points_plus_min', 'desc')
         ->get();
         return view('admin.leaderboard.leaderboard-b',compact('teams'));
 
@@ -74,9 +74,9 @@ class LeaderboardController extends Controller
         $validated = $request->validate([
             'match_played' => 'required',
             'win' => 'required',
-            'draw' => 'required',
             'lose' => 'required',
             'points' => 'required',
+            'points_plus_min' => 'required',
 
         ]
         );
@@ -84,9 +84,9 @@ class LeaderboardController extends Controller
         $team->update([
             'match_played' => $request->match_played,
             'win' => $request->win,
-            'draw' => $request->draw,
             'lose' => $request->lose,
             'points' => $request->points,
+            'points_plus_min' => $request->points_plus_min,
 
         ]);
         return Redirect()->back()->with('success','Team Data Update Successfully');

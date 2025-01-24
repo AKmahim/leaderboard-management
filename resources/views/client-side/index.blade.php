@@ -62,10 +62,11 @@ tr:nth-child(even) {
           <th>Ranking</th>
           <th>Team</th>
           <th>MP</th>
-          {{-- <th>W</th> --}}
-          <th>D</th>
+          <th>W</th>
+          {{-- <th>D</th> --}}
           <th>L</th>
           <th>Pts</th>
+          <th>Pts(+/-)</th>
         </tr>
         @php($i = 1)
         @foreach ($teams_a as $item)
@@ -77,6 +78,7 @@ tr:nth-child(even) {
                 {{-- <td>{{ $item->draw }}</td> --}}
                 <td>{{ $item->lose }}</td>
                 <td>{{ $item->points }}</td>
+                <td>{{ $item->points_plus_min }}</td>
                
             </tr>
         @endforeach
@@ -97,6 +99,7 @@ tr:nth-child(even) {
           {{-- <th>D</th> --}}
           <th>L</th>
           <th>Pts</th>
+          <th>Pts(+/-)</th>
         </tr>
         @php($i = 1)
         @foreach ($teams_b as $item)
@@ -108,6 +111,7 @@ tr:nth-child(even) {
                 {{-- <td>{{ $item->draw }}</td> --}}
                 <td>{{ $item->lose }}</td>
                 <td>{{ $item->points }}</td>
+                <td>{{ $item->points_plus_min }}</td>
                
             </tr>
         @endforeach
@@ -115,89 +119,6 @@ tr:nth-child(even) {
     </div>
   </div>
 
-  {{-- <script>
-    const dados = [
-      {
-        id: 1,
-        name: 'Laura',
-        
-        level: 16,
-        xp: 100,
-        coins: 500,
-        love: 6,
-        beacons: 2,
-        resources: 70,
-      },
-      {
-        id: 2,
-        name: 'Laura',
-        
-        level: 16,
-        xp: 100,
-        coins: 500,
-        love: 6,
-        beacons: 2,
-        resources: 70,
-      },
-    ];
 
-
-
-    function createPlayersList(data) {
-      const playersList = document.createElement('div');
-      playersList.className = 'playerslist';
-
-      const table = document.createElement('div');
-      table.className = 'table';
-      table.innerHTML = `
-        <div>#</div>
-        <div>Team</div>
-        <div>MP</div>
-        <div>W</div>
-        <div>D</div>
-        <div>L</div>
-        <div>Pts</div>
-      `;
-      playersList.appendChild(table);
-
-      const list = document.createElement('div');
-      list.className = 'list';
-
-      data.forEach((leader, index) => {
-        const player = document.createElement('div');
-        player.className = 'player';
-
-        player.innerHTML = `
-          <span class="pr-1">${index + 1}.</span>
-          <div class="user">
-            
-            <span>${leader.name}</span>
-          </div>
-          <span>${leader.level}</span>
-          <span>${leader.xp}</span>
-          <span>${leader.coins}</span>
-          <span>${leader.love}</span>
-          <span>${leader.beacons}</span>
-          <span>${leader.resources}</span>
-        `;
-
-        list.appendChild(player);
-      });
-
-      playersList.appendChild(list);
-
-      return playersList;
-    }
-
-    function renderApp() {
-      const root = document.getElementById('root');
-      root.className = 'container';
-
-      // root.appendChild(createTopLeadersList(dados));
-      root.appendChild(createPlayersList(dados));
-    }
-
-    renderApp();
-  </script> --}}
 </body>
 </html>
