@@ -33,8 +33,15 @@ class TeamController extends Controller
             $img_ext = strtolower($team_icon->getClientOriginalExtension());
             $img_name = $name_gen . '.' . $img_ext;
             $up_location = 'admin/img/team-icons/';
+            $full_path = public_path($up_location);
+            
+            // Create directory if it doesn't exist
+            if(!file_exists($full_path)){
+                mkdir($full_path, 0755, true);
+            }
+            
             $team_icon_path = $up_location.$img_name;
-            $team_icon->move($up_location,$img_name);
+            $team_icon->move($full_path, $img_name);
         }
 
         Leaderboard::insert([
@@ -54,8 +61,8 @@ class TeamController extends Controller
         $team = Leaderboard::find($id);
         if($team){
             $old_img = $team->team_icon_image;
-            if($old_img && file_exists($old_img)){
-                unlink($old_img);
+            if($old_img && file_exists(public_path($old_img))){
+                unlink(public_path($old_img));
             }
             $team->delete();
             return Redirect()->back()->with('success','Team Deleted Successfully');
