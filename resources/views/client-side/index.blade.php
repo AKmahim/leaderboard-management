@@ -387,22 +387,23 @@
       <h2 class="neon-text text-xl md:text-2xl lg:text-3xl font-semibold tracking-wide mb-4">
         BADMINTON TOURNAMENT 2026
       </h2>
-      <div class="flex items-center justify-center gap-4">
+      <div class="flex flex-col items-center justify-center gap-4">
         <div class="h-px w-16 md:w-32 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
         <span class="text-cyan-400 text-sm md:text-base font-medium tracking-widest">LEADERBOARD</span>
+        <span class="text-cyan-400 text-sm md:text-base font-medium tracking-widest">Season 2</span>
         <div class="h-px w-16 md:w-32 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
       </div>
     </header>
 
     <!-- Leaderboard Grid -->
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+    <div class="max-w-4xl mx-auto">
       
       <!-- Group A -->
       <div class="leaderboard-card neon-border neon-glow">
         <div class="group-header">
           <h3 class="neon-text text-lg md:text-xl font-bold tracking-wider flex items-center gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-white font-bold text-sm md:text-base">A</span>
-            GROUP A STANDINGS
+            <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-white font-bold text-sm md:text-base">8</span>
+            Round OF 8
           </h3>
         </div>
         <div class="overflow-x-auto">
@@ -448,63 +449,6 @@
                   </td>
                 </tr>
                 @php($i++)
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Group B -->
-      <div class="leaderboard-card neon-border neon-glow">
-        <div class="group-header">
-          <h3 class="neon-text text-lg md:text-xl font-bold tracking-wider flex items-center gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 text-white font-bold text-sm md:text-base">B</span>
-            GROUP B STANDINGS
-          </h3>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="leaderboard-table">
-            <thead>
-              <tr>
-                <th class="text-center">#</th>
-                <th class="text-left">Team</th>
-                <th class="text-center">MP</th>
-                <th class="text-center">W</th>
-                <th class="text-center">L</th>
-                <th class="text-center">PTS</th>
-                <th class="text-center">+/-</th>
-              </tr>
-            </thead>
-            <tbody>
-              @php($j = 1)
-              @foreach ($teams_b as $item)
-                <tr>
-                  <td class="text-center">
-                    <span class="rank-badge {{ $j == 1 ? 'rank-1' : ($j == 2 ? 'rank-2' : ($j == 3 ? 'rank-3' : 'rank-other')) }}">
-                      {{ $j }}
-                    </span>
-                  </td>
-                  <td>
-                    <div class="flex items-center gap-3">
-                      @if($item->team_icon_image)
-                        <img src="{{ asset($item->team_icon_image) }}" alt="{{ $item->team_name }}" class="team-icon">
-                      @else
-                        <div class="team-icon-placeholder">
-                          {{ strtoupper(substr($item->team_name, 0, 2)) }}
-                        </div>
-                      @endif
-                      <span class="font-semibold text-white truncate max-w-[100px] md:max-w-[150px]">{{ $item->team_name }}</span>
-                    </div>
-                  </td>
-                  <td class="text-center">{{ $item->match_played }}</td>
-                  <td class="text-center stat-win">{{ $item->win }}</td>
-                  <td class="text-center stat-lose">{{ $item->lose }}</td>
-                  <td class="text-center stat-points">{{ $item->points }}</td>
-                  <td class="text-center {{ $item->points_plus_min >= 0 ? 'text-green-400' : 'text-red-400' }}">
-                    {{ $item->points_plus_min >= 0 ? '+' : '' }}{{ $item->points_plus_min }}
-                  </td>
-                </tr>
-                @php($j++)
               @endforeach
             </tbody>
           </table>
