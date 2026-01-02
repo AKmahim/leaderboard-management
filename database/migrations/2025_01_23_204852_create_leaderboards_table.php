@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('leaderboards', function (Blueprint $table) {
             $table->id();
             $table->string('team_name')->nullable();
+            $table->string('team_icon_image')->nullable();
             $table->string('team_group')->nullable();
             $table->integer('match_played')->nullable()->default(0);
             $table->integer('win')->nullable()->default(0);
