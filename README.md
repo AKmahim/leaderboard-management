@@ -2,9 +2,12 @@
 
 A modern, responsive leaderboard management system designed for the **Uttar Baherchar Badminton Tournament 2026**. This application provides real-time team rankings, match statistics, and a stunning neon-themed display interface.
 
----
 
 ## ✨ Key Features
+
+<p align="center">
+   <img src="./ss.png" alt="Leaderboard Screenshot" width="800"/>
+</p>
 
 - 🎯 **Team Management** - Add, update, and delete tournament teams
 - 📊 **Live Leaderboard** - Real-time team rankings with automatic sorting
