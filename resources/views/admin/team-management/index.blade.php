@@ -43,7 +43,14 @@
                                     <td>{{ $item->team_group }}</td>
                                     
                                     <td>
-                                        <a class="btn btn-sm btn-primary" onclick="alert('are you sure?')" href="/admin/team/delete/{{$item->id}}">Delete</a>
+                                        <a class="btn btn-sm btn-success me-1" href="/admin/team/edit/{{$item->id}}">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-danger btn-delete-team" 
+                                                data-bs-toggle="modal" data-bs-target="#deleteModal" 
+                                                data-delete-url="/admin/team/delete/{{$item->id}}" 
+                                                data-team-name="{{ $item->team_name }}" 
+                                                data-team-icon="{{ $item->team_icon_image ?? '' }}">
+                                            Delete
+                                        </button>
                                     </td>
                                     
                                 </tr>
@@ -107,6 +114,60 @@
             </div>
         </div>
     </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-secondary text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title neon-text" id="deleteModalLabel">Delete Team</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex align-items-center gap-3">
+              <div id="modalTeamIconWrapper"></div>
+              <div>
+                <p class="mb-1">Are you sure you want to delete <strong id="modalTeamName"></strong>?</p>
+                <p class="text-muted small mb-0">This action cannot be undone.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+            <a href="#" class="btn btn-danger" id="confirmDeleteBtn">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.btn-delete-team');
+        const modal = document.getElementById('deleteModal');
+        const modalTeamName = document.getElementById('modalTeamName');
+        const modalTeamIconWrapper = document.getElementById('modalTeamIconWrapper');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+        deleteButtons.forEach(btn => {
+          btn.addEventListener('click', function (e) {
+            const teamName = this.getAttribute('data-team-name');
+            const deleteUrl = this.getAttribute('data-delete-url');
+            const teamIcon = this.getAttribute('data-team-icon');
+
+            modalTeamName.textContent = teamName;
+            confirmDeleteBtn.setAttribute('href', deleteUrl);
+
+            // render icon preview
+            if (teamIcon) {
+              modalTeamIconWrapper.innerHTML = `<img src="${teamIcon}" alt="${teamName}" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,0.05);">`;
+            } else {
+              modalTeamIconWrapper.innerHTML = `<div class="team-icon-placeholder" style="width:64px;height:64px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#00d4ff 0%,#0077ff 100%);font-weight:700;color:#0a0a1a;">${teamName.substring(0,2).toUpperCase()}</div>`;
+            }
+          });
+        });
+      });
+    </script>
+
     <!-- Recent Sales End -->
 
 

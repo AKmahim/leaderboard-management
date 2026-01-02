@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/teams',[TeamController::class,'index'])->name('admin.teams');
     Route::post('/admin/team/add',[TeamController::class,'store'])->name('admin.team.add');
     Route::get('/admin/team/delete/{id}',[TeamController::class,'delete']);
+    Route::get('/admin/team/edit/{id}',[TeamController::class,'edit']);
+    Route::post('/admin/team/update/{id}',[TeamController::class,'update']);
 
 
     // ======================= Leaderboard route list =========================

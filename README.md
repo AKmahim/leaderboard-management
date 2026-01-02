@@ -277,11 +277,13 @@ php artisan test
 ### Admin Routes
 - `GET /admin/leaderboard/a` - View Group A leaderboard
 - `GET /admin/leaderboard/b` - View Group B leaderboard
-- `GET /admin/team-management` - Team list
-- `POST /admin/team-management` - Create team
+- `GET /admin/teams` - Team list
+- `POST /admin/team/add` - Create team
+- `GET /admin/team/edit/{id}` - Edit team info
+- `POST /admin/team/update/{id}` - Update team info
+- `GET /admin/team/delete/{id}` - Delete team
 - `GET /admin/leaderboard/{id}/edit` - Edit team stats
 - `POST /admin/leaderboard/{id}/update` - Update team stats
-- `DELETE /admin/team-management/{id}` - Delete team
 
 ---
 
