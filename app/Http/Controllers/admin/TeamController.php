@@ -23,29 +23,24 @@ class TeamController extends Controller
         $validated = $request->validate([
             'team_name' => 'required|max:255',
             'team_group' => 'required',
+        ]);
 
-        ]
-        );
-
-        // ============== without resizing system =======
-        // $category_img = $request->file('category_img');
-        // $last_img = '';
-        // if($category_img){
-        //     $name_gen = hexdec(uniqid());
-        //     $img_ext = strtolower($category_img->getClientOriginalExtension());
-        //     $img_name = $name_gen . '.' . $img_ext;
-        //     $up_location = 'admin/img/blog-category/';
-        //     $last_img = $up_location.$img_name;
-        //     $category_img->move($up_location,$img_name);
-
-        // }
-
-
-        
+        // Handle team icon image upload
+        $team_icon_path = null;
+        if($request->hasFile('team_icon_image')){
+            $team_icon = $request->file('team_icon_image');
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($team_icon->getClientOriginalExtension());
+            $img_name = $name_gen . '.' . $img_ext;
+            $up_location = 'admin/img/team-icons/';
+            $team_icon_path = $up_location.$img_name;
+            $team_icon->move($up_location,$img_name);
+        }
 
         Leaderboard::insert([
             'team_name' => $request->team_name,
             'team_group' => $request->team_group,
+            'team_icon_image' => $team_icon_path,
         ]);
         return Redirect()->back()->with('success','New Team Created Successfully');
       
@@ -58,11 +53,10 @@ class TeamController extends Controller
         //
         $team = Leaderboard::find($id);
         if($team){
-            // $old_img = $category->category_img;
-            // if($old_img){
-            //     unlink($old_img);
-
-            // }
+            $old_img = $team->team_icon_image;
+            if($old_img && file_exists($old_img)){
+                unlink($old_img);
+            }
             $team->delete();
             return Redirect()->back()->with('success','Team Deleted Successfully');
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Nagorik Unnoyon Badminton Tournamemt 2025 | Admin Login </title>
+    <title>Uttar Baherchar Badminton Tournament 2026 | Admin Login </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -46,7 +46,7 @@
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="{{url('/')}}" class="">
-                                <h3 class="text-primary"><img src="{{asset('frontend')}}/images/xri-logo.svg" style="height: 40px; margin-right:20px;" alt="" srcset="">Nagorik Unnoyon Badminton Tournamemt 2025</h3>
+                                <h3 class="text-primary" style="text-align: center">Uttar Baherchar Badminton Tournament 2026</h3>
                             </a>
                             {{-- <br>
                             <h3>Login</h3> --}}
@@ -58,9 +58,12 @@
                                 <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Email address</label>
                             </div>
-                            <div class="form-floating mb-4">
+                            <div class="form-floating mb-4 position-relative">
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
+                                <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y" id="togglePassword" style="border: none; background: transparent; padding-right: 15px; z-index: 10;">
+                                    <i class="fas fa-eye text-primary" id="eyeIcon"></i>
+                                </button>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
@@ -84,6 +87,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('admin') }}/js/main.js"></script>
+    
+    <!-- Password Toggle Script -->
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('floatingPassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -21,6 +21,7 @@
                             <tr class="text-white">
                                 
                                 <th scope="col">ID</th>
+                                <th scope="col">Team Icon</th>
                                 <th scope="col">Team Name</th>
                                 <th scope="col">Team Group</th>
                                 <th scope="col">Action</th>
@@ -31,6 +32,13 @@
                             @foreach ($teams as $item)
                                 <tr>
                                     <td>{{ $i++ }}</td>
+                                    <td>
+                                        @if($item->team_icon_image)
+                                            <img src="{{ asset($item->team_icon_image) }}" alt="Team Icon" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @else
+                                            <span class="text-muted">No Icon</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->team_name }}</td>
                                     <td>{{ $item->team_group }}</td>
                                     
@@ -67,6 +75,13 @@
                                     placeholder="insert new team">
                                 <label for="floatingInput">Team Name</label>
                                 @error('team_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="team_icon_image" class="form-label">Team Icon Image</label>
+                                <input type="file" name="team_icon_image" class="form-control" id="team_icon_image" accept="image/*">
+                                @error('team_icon_image')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
